@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sire &middot; Waitroom</title>
+<meta name="description" content="Your Sire application is under review.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg-elev: #141414;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.16);
+    --text: #F0EBE0;
+    --text-muted: #8A857B;
+    --text-dim: #5A564F;
+    --accent: #D4A574;
+    --accent-glow: rgba(212, 165, 116, 0.15);
+    --good: #7AA87A;
+    --live: #E5564F;
+    --sire-logo: url(data:image/png;base64,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);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Geist', -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    font-feature-settings: 'ss01', 'cv11';
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.92 0 0 0 0 0.87 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== SIRE LOGO — WHITE ===== */
+  .sire-logo {
+    background-image: var(--sire-logo);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    display: inline-block;
+    aspect-ratio: 302 / 51;
+    filter: brightness(0) invert(1);
+  }
+
+  .sire-logo.nav-logo { height: 28px; width: auto; min-width: 166px; }
+  .sire-logo.chart-logo { height: 13px; width: 77px; min-width: 77px; }
+  .sire-logo.sms-logo { height: 18px; min-width: 106px; background-position: center; }
+  .sire-logo.footer-logo {
+    height: 22px; min-width: 130px;
+    opacity: 0.7; margin-bottom: 14px;
+    background-position: center;
+  }
+
+  /* ===== STICKY PROGRESS BAR ===== */
+  .progress-top {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+  }
+
+  .progress-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .progress-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .progress-meta .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .progress-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent) 0%, #E8C290 100%);
+    border-radius: 100px;
+    transition: width 1s linear;
+    position: relative;
+    box-shadow: 0 0 20px rgba(212, 165, 116, 0.4);
+  }
+
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 20px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+  }
+
+  .progress-time {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    min-width: 48px;
+    text-align: right;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    padding: 28px 24px 16px;
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* ===== HERO ===== */
+  .hero { padding: 32px 0 56px; position: relative; }
+
+  .hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 13px 7px 11px;
+    background: rgba(212, 165, 116, 0.08);
+    border: 1px solid rgba(212, 165, 116, 0.22);
+    border-radius: 100px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.1s forwards;
+  }
+
+  .hero-status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: blink 1.4s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(48px, 8.5vw, 100px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease-out 0.25s forwards;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--accent); }
+
+  .hero-sub {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    max-width: 580px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease-out 0.4s forwards;
+  }
+
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+
+  .hero-sub-caption {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0;
+    animation: fadeUp 0.9s ease-out 0.55s forwards;
+  }
+
+  .hero-sub-caption svg { width: 12px; height: 12px; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== REVIEW PROGRESS ===== */
+  .review { padding: 16px 0 32px; }
+
+  .review-panel {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .review-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.4;
+    animation: scan 4s ease-in-out infinite;
+  }
+
+  @keyframes scan {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+  }
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .review-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .review-id {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10.5px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 12px 0;
+    font-family: 'Geist Mono', monospace;
+    font-size: 13.5px;
+    transition: all 0.4s ease;
+  }
+
+  .step-icon {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-strong);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+  }
+
+  .step-icon svg { width: 10px; height: 10px; opacity: 0; transition: opacity 0.3s; }
+
+  .step-name { flex: 1; color: var(--text-dim); transition: color 0.4s ease; }
+  .step-time { color: var(--text-dim); font-size: 11px; letter-spacing: 0.05em; transition: color 0.4s ease; }
+
+  .step.active .step-icon {
+    border-color: var(--accent);
+    background: rgba(212, 165, 116, 0.08);
+    animation: spin-pulse 1.2s ease-in-out infinite;
+  }
+
+  .step.active .step-name { color: var(--text); }
+  .step.active .step-time { color: var(--accent); }
+
+  @keyframes spin-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+    50% { box-shadow: 0 0 0 6px transparent; }
+  }
+
+  .step.complete .step-icon { border-color: var(--accent); background: var(--accent); }
+  .step.complete .step-icon svg { opacity: 1; color: var(--bg); }
+  .step.complete .step-name { color: var(--text); }
+  .step.complete .step-time { color: var(--text-muted); }
+
+  /* ===== TICKER SECTION (full-width wrapper) ===== */
+  .ticker-section {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 32px;
+  }
+
+  /* ===== LIVE RATES TICKER ===== */
+  .ticker-wrap {
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    background: linear-gradient(180deg, #0B0B0B, #0E0E0E 50%, #0B0B0B);
+    border-top: 1px solid rgba(212, 165, 116, 0.5);
+    border-bottom: 1px solid rgba(212, 165, 116, 0.5);
+    box-shadow: 0 0 50px rgba(212, 165, 116, 0.22), inset 0 0 80px rgba(212, 165, 116, 0.04);
+    overflow: hidden;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    animation: tickerBorder 3.5s ease-in-out infinite;
+  }
+
+  @keyframes tickerBorder {
+    0%, 100% {
+      border-color: rgba(212, 165, 116, 0.45);
+      box-shadow: 0 0 40px rgba(212, 165, 116, 0.18), inset 0 0 60px rgba(212, 165, 116, 0.03);
+    }
+    50% {
+      border-color: rgba(212, 165, 116, 0.9);
+      box-shadow: 0 0 70px rgba(212, 165, 116, 0.35), inset 0 0 80px rgba(212, 165, 116, 0.07);
+    }
+  }
+
+  .ticker-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 30%, rgba(212, 165, 116, 0.14) 50%, transparent 70%);
+    animation: tickerSweep 5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  @keyframes tickerSweep {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .ticker-badge {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    z-index: 4;
+    background: #0B0B0B;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border-right: 1px solid rgba(212, 165, 116, 0.35);
+    box-shadow: 12px 0 22px rgba(11, 11, 11, 0.95);
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--live);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .live-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--live);
+    box-shadow: 0 0 10px var(--live), 0 0 2px var(--live);
+    animation: liveBlink 1.1s ease-in-out infinite;
+  }
+
+  @keyframes liveBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.25; transform: scale(0.75); }
+  }
+
+  .ticker {
+    padding-left: 100px;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 40px), transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 40px), transparent 100%);
+  }
+
+  .ticker-track {
+    display: inline-flex;
+    align-items: center;
+    animation: tickerScroll 55s linear infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes tickerScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .ti {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 0 22px;
+    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+  }
+
+  .ti .name { color: var(--text); font-weight: 500; }
+  .ti .arrow { color: var(--text-dim); padding: 0 2px; }
+  .ti strong { color: var(--accent); font-weight: 700; }
+  .ti .saved {
+    color: var(--good);
+    font-weight: 500;
+    border-left: 1px solid var(--border);
+    padding-left: 10px;
+    margin-left: 4px;
+  }
+
+  .ti.tag {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 12px;
+  }
+
+  .sep {
+    color: var(--accent);
+    opacity: 0.5;
+    padding: 0 2px;
+    font-size: 11px;
+  }
+
+  /* ===== SCROLL COMMAND (the screamer) ===== */
+  .scroll-command {
+    position: relative;
+    z-index: 6;
+    text-align: center;
+    padding: 32px 24px 8px;
+    pointer-events: none;
+  }
+
+  .scroll-label {
+    display: block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    text-transform: uppercase;
+    text-shadow: 0 0 18px rgba(212, 165, 116, 0.9), 0 0 36px rgba(212, 165, 116, 0.4);
+    margin-bottom: 22px;
+    white-space: nowrap;
+    animation: labelFlash 1.4s ease-in-out infinite;
+  }
+
+  @keyframes labelFlash {
+    0%, 100% { opacity: 0.55; letter-spacing: 0.2em; }
+    50% { opacity: 1; letter-spacing: 0.28em; }
+  }
+
+  .scroll-headline {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(32px, 4.5vw, 48px);
+    line-height: 1;
+    background: linear-gradient(180deg, #F2D7B0 0%, var(--accent) 55%, #8F6A3E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+    filter: drop-shadow(0 4px 30px rgba(212, 165, 116, 0.4));
+  }
+
+  .scroll-arrow {
+    display: inline-block;
+    width: clamp(26px, 2.8vw, 34px);
+    height: clamp(34px, 3.8vw, 44px);
+    filter: drop-shadow(0 0 14px rgba(212, 165, 116, 0.85)) drop-shadow(0 4px 24px rgba(212, 165, 116, 0.45));
+    animation: arrowBounce 0.95s ease-in-out infinite;
+  }
+  .scroll-arrow svg { width: 100%; height: 100%; display: block; }
+
+  @keyframes arrowBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(7px) scale(1.05); }
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  section { padding: 56px 0; position: relative; }
+
+  .section-eyebrow {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(40px, 6vw, 68px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+    max-width: 780px;
+  }
+
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  /* ===== BAR CHART ===== */
+  .chart-wrap {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 32px 28px;
+  }
+
+  .chart {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+    align-items: flex-end;
+    height: 340px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .bar-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    position: relative;
+  }
+
+  .bar-price {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
+
+  .bar-col.sire .bar-price {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .bar {
+    width: 100%;
+    max-width: 72px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+    border: 1px solid var(--border);
+    border-radius: 6px 6px 0 0;
+    height: 0;
+    transition: height 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+  }
+
+  .bar-col.sire .bar {
+    background: linear-gradient(180deg, var(--accent), #B88A58);
+    border-color: var(--accent);
+    box-shadow: 0 0 30px rgba(212, 165, 116, 0.3), 0 0 0 1px rgba(212, 165, 116, 0.5);
+  }
+
+  .bar-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 14px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.3;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bar-col.sire .bar-label { color: var(--text); font-weight: 600; }
+
+  .chart-foot {
+    padding: 16px 0 0;
+    border-top: 1px solid var(--border);
+    margin-top: 12px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  /* ===== SHIPMENT LIST (compact horizontal rows) ===== */
+  .shipment-list {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .shipment-row {
+    display: grid;
+    grid-template-columns: 1.3fr 1.4fr 1fr;
+    gap: 24px;
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .shipment-row:last-child { border-bottom: none; }
+  .shipment-row:hover { background: rgba(255, 255, 255, 0.015); }
+
+  .sr-type {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+
+  .sr-compare {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sr-old {
+    font-family: 'Geist Mono', monospace;
+    color: var(--text-dim);
+    text-decoration: line-through;
+    font-size: 14px;
+  }
+
+  .sr-arrow {
+    font-family: 'Geist Mono', monospace;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+
+  .sr-new {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 30px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .sr-save {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--good);
+    text-align: right;
+  }
+
+  /* ===== VIDEO ===== */
+  .video-wrap {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    aspect-ratio: 16/9;
+    max-width: 880px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    background: #0E0E0E;
+  }
+
+  .video-thumb {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #0D0D0D 0%, #1A1712 40%, #0C0A07 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.6s ease;
+    overflow: hidden;
+  }
+
+  /* Atmosphere glow behind play button */
+  .video-thumb::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 60%; height: 120%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse, rgba(212, 165, 116, 0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Faint grid pattern */
+  .video-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 42px 42px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+
+  .thumb-logo {
+    position: absolute;
+    top: 24px;
+    left: 26px;
+    z-index: 3;
+  }
+  .thumb-logo .sire-logo {
+    height: 22px;
+    width: 130px;
+    min-width: 130px;
+  }
+
+  .thumb-meta {
+    position: absolute;
+    top: 24px;
+    right: 26px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 11px;
+    background: rgba(11, 11, 11, 0.7);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+  }
+
+  .thumb-meta.live {
+    color: var(--live);
+    border-color: rgba(229, 86, 79, 0.4);
+    background: rgba(229, 86, 79, 0.12);
+  }
+
+  .thumb-meta.live::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--live);
+    box-shadow: 0 0 8px var(--live);
+    animation: liveBlink 1.1s ease-in-out infinite;
+  }
+
+  .thumb-caption {
+    position: absolute;
+    bottom: 26px;
+    left: 26px;
+    z-index: 3;
+    max-width: 60%;
+  }
+
+  .thumb-title {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(28px, 3.8vw, 44px);
+    color: var(--text);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .thumb-title em { color: var(--accent); font-style: italic; }
+
+  .thumb-sub {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* Decorative accent shape in corner */
+  .thumb-accent {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle at bottom right, rgba(212, 165, 116, 0.12), transparent 60%);
+    pointer-events: none;
+  }
+
+  .video-wrap:hover .video-thumb { transform: scale(1.02); }
+
+  .play-btn {
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    background: rgba(212, 165, 116, 0.95);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 40px rgba(212, 165, 116, 0.4), 0 0 0 8px rgba(212, 165, 116, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .video-wrap:hover .play-btn {
+    transform: scale(1.08);
+    box-shadow: 0 10px 50px rgba(212, 165, 116, 0.6), 0 0 0 12px rgba(212, 165, 116, 0.2);
+  }
+
+  .play-btn svg { width: 30px; height: 30px; color: #0A0A0A; margin-left: 4px; }
+
+  .video-wrap iframe {
+    width: 100%; height: 100%;
+    border: 0;
+    position: absolute;
+    inset: 0;
+    background: #000;
+  }
+
+  /* ===== SMS SECTION ===== */
+  .next-section { padding: 56px 0 96px; }
+
+  .next-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .micro-cta {
+    margin-top: 32px;
+    padding: 22px 26px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .micro-cta-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: rgba(212, 165, 116, 0.1);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+
+  .micro-cta-text { flex: 1; font-size: 14px; line-height: 1.5; }
+
+  .micro-cta-text strong {
+    display: block;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  .micro-cta-text span { color: var(--text-muted); }
+
+  .phone-mockup {
+    background: #0E0E0E;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 20px 18px 22px;
+    max-width: 340px;
+    margin: 0 auto;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  .phone-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 12px 14px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+
+  .phone-contact-logo { display: flex; justify-content: center; margin-bottom: 4px; }
+
+  .phone-contact-sub {
+    text-align: center;
+    font-size: 10.5px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    font-family: 'Geist Mono', monospace;
+  }
+
+  .sms-bubble {
+    background: #1C1C1C;
+    border: 1px solid var(--border);
+    border-radius: 16px 16px 16px 4px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 4px;
+    word-wrap: break-word;
+  }
+
+  .sms-bubble:last-of-type { margin-bottom: 12px; }
+
+  .sms-bubble.incoming-new {
+    border-color: rgba(212, 165, 116, 0.3);
+    background: linear-gradient(180deg, rgba(212, 165, 116, 0.08), #1C1C1C);
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 165, 116, 0); }
+    50% { box-shadow: 0 0 20px 0 rgba(212, 165, 116, 0.2); }
+  }
+
+  .sms-link { color: var(--accent); }
+
+  .sms-code {
+    display: inline-block;
+    background: rgba(212, 165, 116, 0.14);
+    color: var(--accent);
+    font-family: 'Geist Mono', monospace;
+    padding: 3px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    filter: blur(5px);
+    user-select: none;
+  }
+
+  .sms-time {
+    font-size: 9.5px;
+    color: var(--text-dim);
+    text-align: center;
+    margin: 10px 0 8px;
+    font-family: 'Geist Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .sms-pending {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(212, 165, 116, 0.05);
+    border: 1px dashed rgba(212, 165, 116, 0.22);
+    border-radius: 10px;
+    font-size: 11px;
+    color: var(--accent);
+    font-family: 'Geist Mono', monospace;
+    margin-top: 4px;
+  }
+
+  .dots { display: inline-flex; gap: 3px; }
+  .dots span {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: bounce 1.4s infinite;
+  }
+  .dots span:nth-child(2) { animation-delay: 0.2s; }
+  .dots span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-3px); opacity: 1; }
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 48px 0 40px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .footer-copy {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text-muted);
+    letter-spacing: -0.005em;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .progress-top { padding: 10px 16px; }
+    .progress-inner { gap: 12px; }
+    .progress-meta { font-size: 10px; letter-spacing: 0.08em; }
+    .progress-meta span:not(.dot) { display: none; }
+
+    nav { padding: 18px 16px 10px; }
+    .sire-logo.nav-logo { height: 22px; min-width: 130px; }
+
+    .hero { padding: 20px 0 36px; }
+
+    .review { padding: 8px 0 24px; }
+    .review-panel { padding: 22px 20px; }
+    .review-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .step { gap: 14px; font-size: 12px; padding: 10px 0; }
+
+    .ticker-wrap { height: 50px; }
+    .ticker-badge { padding: 0 14px; font-size: 10px; letter-spacing: 0.14em; gap: 7px; }
+    .ticker-badge .live-dot { width: 6px; height: 6px; }
+    .ticker { padding-left: 80px; }
+    .ti { font-size: 11.5px; padding: 0 16px; gap: 8px; }
+
+    .scroll-label { font-size: 11px; letter-spacing: 0.28em; }
+    .scroll-command { padding: 14px 16px 6px; }
+
+    section { padding: 40px 0; }
+
+    .chart-wrap { padding: 28px 12px 20px; }
+    .chart { grid-template-columns: repeat(7, 1fr); gap: 4px; height: 260px; }
+    .bar { max-width: 100%; border-radius: 4px 4px 0 0; }
+    .bar-price { font-size: 9.5px; margin-bottom: 6px; }
+    .bar-col.sire .bar-price { font-size: 11px; }
+    .bar-label { font-size: 9px; margin-top: 8px; height: 24px; }
+    .bar-col.sire .bar::before { font-size: 7px; padding: 2px 4px; top: -18px; letter-spacing: 0.08em; }
+
+    .play-btn { width: 64px; height: 64px; }
+    .play-btn svg { width: 22px; height: 22px; }
+    .thumb-logo { top: 16px; left: 18px; }
+    .thumb-logo .sire-logo { height: 17px; width: 100px; min-width: 100px; }
+    .thumb-meta { top: 16px; right: 16px; padding: 5px 9px; font-size: 9.5px; }
+    .thumb-caption { bottom: 18px; left: 18px; max-width: 72%; }
+    .thumb-sub { font-size: 10px; }
+
+    .next-grid { grid-template-columns: 1fr; gap: 48px; }
+    .next-copy { order: 2; }
+    .next-mockup { order: 1; }
+
+    .shipment-row {
+      grid-template-columns: 1fr auto;
+      gap: 8px 14px;
+      padding: 14px 18px;
+    }
+    .sr-type { grid-column: 1 / -1; }
+    .sr-compare { grid-column: 1; }
+    .sr-save { grid-column: 2; text-align: right; font-size: 10.5px; }
+    .sr-new { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-top">
+  <div class="progress-inner">
+    <div class="progress-meta">
+      <div class="dot"></div>
+      <span>Reviewing</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-time" id="progressTime">5:00</div>
+  </div>
+</div>
+
+<nav>
+  <span class="sire-logo nav-logo" aria-label="Sire"></span>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-status">
+      <div class="hero-status-dot"></div>
+      Application under review
+    </div>
+    <h1>The lowest rates<br>on the internet.<br><em>Guaranteed.</em></h1>
+    <p class="hero-sub">
+      Your estimated wait time for AI approval is approximately <strong>5 minutes</strong>.
+    </p>
+    <div class="hero-sub-caption">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v8m0 0l-3-3m3 3l3-3"/></svg>
+      See live review status below
+    </div>
+  </div>
+</section>
+
+<section class="review">
+  <div class="container">
+    <div class="review-panel">
+      <div class="review-header">
+        <span class="review-label">&mdash; Live review status</span>
+        <span class="review-id">PROCESSING</span>
+      </div>
+
+      <div class="step" data-step="0">
+        <div class="step-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 6l3 3 5-6"/></svg></div>
+        <div class="step-name">Identity verified</div>
+        <div class="step-time">0:15</div>
+      </div>
+      <div class="step" data-step="1">
+        <div class="step-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 6l3 3 5-6"/></svg></div>
+        <div class="step-name">Shipping profile analyzed</div>
+        <div class="step-time">1:30</div>
+      </div>
+      <div class="step" data-step="2">
+        <div class="step-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 6l3 3 5-6"/></svg></div>
+        <div class="step-name">Analyzing your UPS + FedEx rates</div>
+        <div class="step-time">3:20</div>
+      </div>
+      <div class="step" data-step="3">
+        <div class="step-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 6l3 3 5-6"/></svg></div>
+        <div class="step-name">Account provisioned</div>
+        <div class="step-time">4:40</div>
+      </div>
+      <div class="step" data-step="4">
+        <div class="step-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 6l3 3 5-6"/></svg></div>
+        <div class="step-name">Access granted</div>
+        <div class="step-time">5:00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCROLL COMMAND (points at the chart below) -->
+<div class="scroll-command">
+  <div class="scroll-label">&rarr;&nbsp;&nbsp;See how much you were overpaying&nbsp;&nbsp;&larr;</div>
+  <div class="scroll-arrow">
+    <svg viewBox="0 0 48 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="arrowGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#F2D7B0"/>
+          <stop offset="55%" stop-color="#D4A574"/>
+          <stop offset="100%" stop-color="#8F6A3E"/>
+        </linearGradient>
+      </defs>
+      <rect x="18" y="0" width="12" height="40" fill="url(#arrowGrad)"/>
+      <path d="M0 36 L24 64 L48 36 Z" fill="url(#arrowGrad)"/>
+    </svg>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+<h2 class="section-title">Same label. <em>Different price.</em></h2>
+
+    <div class="chart-wrap">
+      <div class="chart" id="chart">
+        <div class="bar-col" data-price="13.64">
+          <div class="bar-price">$13.64</div>
+          <div class="bar"></div>
+          <div class="bar-label">ShipStation</div>
+        </div>
+        <div class="bar-col" data-price="13.15">
+          <div class="bar-price">$13.15</div>
+          <div class="bar"></div>
+          <div class="bar-label">Shippo</div>
+        </div>
+        <div class="bar-col" data-price="12.95">
+          <div class="bar-price">$12.95</div>
+          <div class="bar"></div>
+          <div class="bar-label">Pirate Ship</div>
+        </div>
+        <div class="bar-col" data-price="12.85">
+          <div class="bar-price">$12.85</div>
+          <div class="bar"></div>
+          <div class="bar-label">eBay</div>
+        </div>
+        <div class="bar-col" data-price="12.65">
+          <div class="bar-price">$12.65</div>
+          <div class="bar"></div>
+          <div class="bar-label">Shopify</div>
+        </div>
+        <div class="bar-col" data-price="12.50">
+          <div class="bar-price">$12.50</div>
+          <div class="bar"></div>
+          <div class="bar-label">Amazon</div>
+        </div>
+        <div class="bar-col sire" data-price="11.95">
+          <div class="bar-price">$11.95</div>
+          <div class="bar"></div>
+          <div class="bar-label"><span class="sire-logo chart-logo" aria-label="Sire"></span></div>
+        </div>
+      </div>
+      <div class="chart-foot">
+        NEW YORK &rarr; LOS ANGELES &middot; 4 LB SHOE BOX &middot; UPS GROUND
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER SECTION (below the chart) -->
+<div class="ticker-section">
+  <div class="ticker-wrap" aria-label="Live rate comparison ticker">
+    <div class="ticker-badge">
+      <span class="live-dot"></span>
+      LIVE RATES
+    </div>
+    <div class="ticker">
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">&mdash; The stuff you actually ship</div>
+    <h2 class="section-title">You save on <em>every label.</em></h2>
+
+    <div class="shipment-list">
+      <div class="shipment-row">
+        <div class="sr-type">Shoe box &middot; 4 lb<br>NY &rarr; LA</div>
+        <div class="sr-compare">
+          <span class="sr-old">$13.64</span>
+          <span class="sr-arrow">&rarr;</span>
+          <span class="sr-new">$11.95</span>
+        </div>
+        <div class="sr-save">&darr; $1.69 saved &middot; 12%</div>
+      </div>
+      <div class="shipment-row">
+        <div class="sr-type">Single pair &middot; 2 lb<br>NY &rarr; Miami</div>
+        <div class="sr-compare">
+          <span class="sr-old">$10.80</span>
+          <span class="sr-arrow">&rarr;</span>
+          <span class="sr-new">$9.55</span>
+        </div>
+        <div class="sr-save">&darr; $1.25 saved &middot; 12%</div>
+      </div>
+      <div class="shipment-row">
+        <div class="sr-type">Apparel &middot; 1 lb<br>NY &rarr; Austin</div>
+        <div class="sr-compare">
+          <span class="sr-old">$9.45</span>
+          <span class="sr-arrow">&rarr;</span>
+          <span class="sr-new">$8.35</span>
+        </div>
+        <div class="sr-save">&darr; $1.10 saved &middot; 12%</div>
+      </div>
+      <div class="shipment-row">
+        <div class="sr-type">Multi-item &middot; 8 lb<br>NY &rarr; Seattle</div>
+        <div class="sr-compare">
+          <span class="sr-old">$18.20</span>
+          <span class="sr-arrow">&rarr;</span>
+          <span class="sr-new">$16.05</span>
+        </div>
+        <div class="sr-save">&darr; $2.15 saved &middot; 12%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">&mdash; Don't take our word for it</div>
+    <h2 class="section-title">See the rates, <em>live.</em></h2>
+    <div class="video-wrap" id="videoProofWrap" onclick="loadVideo('videoProofWrap','videoProofThumb','5Wwhola6QdE')">
+      <div class="video-thumb" id="videoProofThumb">
+        <div class="thumb-accent"></div>
+        <div class="thumb-logo"><span class="sire-logo" aria-label="Sire"></span></div>
+        <div class="thumb-meta live">Live check</div>
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="thumb-caption">
+          <div class="thumb-title">Watch the rates, <em>live.</em></div>
+          <div class="thumb-sub">Sire vs Pirate Ship vs Shippo, screen-by-screen.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">&mdash; 90-second preview</div>
+    <h2 class="section-title">How a label <em>gets made.</em></h2>
+    <div class="video-wrap" id="videoHowWrap" onclick="loadVideo('videoHowWrap','videoHowThumb','VfcCj9zr__s')">
+      <div class="video-thumb" id="videoHowThumb">
+        <div class="thumb-accent"></div>
+        <div class="thumb-logo"><span class="sire-logo" aria-label="Sire"></span></div>
+        <div class="thumb-meta">Tutorial &middot; 1:30</div>
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="thumb-caption">
+          <div class="thumb-title">Your first label, <em>made.</em></div>
+          <div class="thumb-sub">From zero to shipped in under 90 seconds.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="next-section">
+  <div class="container">
+    <div class="next-grid">
+      <div class="next-copy">
+        <div class="section-eyebrow">&mdash; In 5 minutes</div>
+        <h2 class="section-title">Check your <em>texts.</em></h2>
+
+        <div class="micro-cta">
+          <div class="micro-cta-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div class="micro-cta-text">
+            <strong>Save our number as "Sire" now.</strong>
+            <span>Keeps your access code out of spam.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="next-mockup">
+        <div class="phone-mockup">
+          <div class="phone-header">
+            <span>9:41</span>
+            <span>&middot;&middot;&middot;</span>
+          </div>
+          <div class="phone-contact-logo">
+            <span class="sire-logo sms-logo" aria-label="Sire"></span>
+          </div>
+          <div class="phone-contact-sub">iMessage</div>
+
+          <div class="sms-time">Today 9:41 AM</div>
+          <div class="sms-bubble">You have successfully joined the Sire waitlist.</div>
+          <div class="sms-bubble">Our AI is currently reviewing your application. To view the status of your application&hellip;</div>
+          <div class="sms-bubble">View here: <span class="sms-link">sireship.com/waitroom</span></div>
+
+          <div class="sms-time">In ~5 minutes</div>
+          <div class="sms-bubble incoming-new">
+            You have successfully been let off the Sire waitlist! &#127881;<br><br>
+            Access Code: <span class="sms-code">583401</span>
+          </div>
+          <div class="sms-bubble incoming-new">
+            You can now log back in using your phone number to access Sire now<br><br>
+            App: sireapp.io/download<br>
+            Web: sireship.com
+          </div>
+
+          <div class="sms-pending">
+            <div class="dots"><span></span><span></span><span></span></div>
+            Code arriving shortly
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="sire-logo footer-logo" aria-label="Sire"></span>
+    <div class="footer-copy">The lowest shipping rates on the internet. Guaranteed.</div>
+  </div>
+</footer>
+
+<script>
+  const TICKER_ITEMS = [
+    { name: 'ShipStation', theirs: '$13.64', saved: '$1.69' },
+    { name: 'Shippo',      theirs: '$13.15', saved: '$1.20' },
+    { name: 'Pirate Ship', theirs: '$12.95', saved: '$1.00' },
+    { name: 'eBay',        theirs: '$12.85', saved: '$0.90' },
+    { name: 'Shopify',     theirs: '$12.65', saved: '$0.70' },
+    { name: 'Amazon',      theirs: '$12.50', saved: '$0.55' }
+  ];
+
+  function buildTickerSet() {
+    let html = '';
+    TICKER_ITEMS.forEach(function(item) {
+      html += '<span class="ti"><span class="name">' + item.name + '</span> ' + item.theirs +
+              ' <span class="arrow">&rarr;</span> SIRE <strong>$11.95</strong>' +
+              ' <span class="saved">&darr; saved ' + item.saved + '</span></span>';
+      html += '<span class="sep">&#x2726;</span>';
+    });
+    html += '<span class="ti tag">12% lower &middot; every label &middot; guaranteed</span>';
+    html += '<span class="sep">&#x2726;</span>';
+    return html;
+  }
+
+  const track = document.getElementById('tickerTrack');
+  if (track) track.innerHTML = buildTickerSet() + buildTickerSet();
+
+  const DURATION_SEC = 5 * 60;
+  const startedAt = Date.now();
+  const STEP_COMPLETIONS = [15, 90, 200, 280, 300];
+
+  function update() {
+    const elapsed = Math.floor((Date.now() - startedAt) / 1000);
+    const remaining = Math.max(0, DURATION_SEC - elapsed);
+
+    const pct = Math.min(100, (elapsed / DURATION_SEC) * 100);
+    const fill = document.getElementById('progressFill');
+    if (fill) fill.style.width = pct + '%';
+
+    const m = Math.floor(remaining / 60);
+    const s = remaining % 60;
+    const timeEl = document.getElementById('progressTime');
+    if (timeEl) {
+      if (remaining === 0) {
+        timeEl.textContent = 'OK';
+        timeEl.style.color = 'var(--accent)';
+      } else {
+        timeEl.textContent = m + ':' + s.toString().padStart(2, '0');
+      }
+    }
+
+    const steps = document.querySelectorAll('.step');
+    steps.forEach(function(step, i) {
+      const completeAt = STEP_COMPLETIONS[i];
+      const prevCompleteAt = i === 0 ? 0 : STEP_COMPLETIONS[i - 1];
+      step.classList.remove('active', 'complete');
+      if (elapsed >= completeAt) step.classList.add('complete');
+      else if (elapsed >= prevCompleteAt) step.classList.add('active');
+    });
+  }
+
+  update();
+  setInterval(update, 1000);
+
+  const BASELINE = 11.00;
+  function renderBars() {
+    const cols = document.querySelectorAll('.bar-col');
+    let maxDelta = 0;
+    cols.forEach(function(col) {
+      const delta = parseFloat(col.dataset.price) - BASELINE;
+      if (delta > maxDelta) maxDelta = delta;
+    });
+    cols.forEach(function(col) {
+      const delta = parseFloat(col.dataset.price) - BASELINE;
+      const heightPct = (delta / maxDelta) * 100;
+      const bar = col.querySelector('.bar');
+      setTimeout(function() { bar.style.height = heightPct + '%'; }, 100);
+    });
+  }
+
+  const chartEl = document.getElementById('chart');
+  if (chartEl && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { renderBars(); obs.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(chartEl);
+  } else {
+    renderBars();
+  }
+
+  function loadVideo(wrapId, thumbId, videoId) {
+    const wrap = document.getElementById(wrapId);
+    const thumb = document.getElementById(thumbId);
+    if (!wrap || !thumb) return;
+
+    // Embed YouTube iframe so users can watch without leaving the page
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    iframe.title = 'Sire';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+    iframe.setAttribute('allowfullscreen', 'true');
+    iframe.loading = 'lazy';
+
+    thumb.remove();
+    wrap.appendChild(iframe);
+    wrap.style.cursor = 'default';
+  }
+</script>
+
+</body>
+</html>
