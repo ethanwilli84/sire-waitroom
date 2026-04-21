@@ -170,13 +170,11 @@
 
   /* ===== NAV ===== */
   nav {
-    padding: 28px 24px 16px;
-    max-width: 1080px;
-    margin: 0 auto;
+    padding: 28px 0 16px;
+    width: 100%;
     position: relative;
     z-index: 10;
     text-align: left;
-    width: 100%;
     box-sizing: border-box;
     align-self: stretch;
   }
@@ -1084,7 +1082,7 @@
     .progress-meta { font-size: 10px; letter-spacing: 0.08em; }
     .progress-meta span:not(.dot) { display: none; }
 
-    nav { padding: 18px 16px 10px; }
+    nav { padding: 18px 0 10px; }
     .sire-logo.nav-logo { height: 22px; min-width: 130px; }
 
     .hero { padding: 20px 0 36px; }
@@ -1135,12 +1133,12 @@
     .sr-save { grid-column: 2; text-align: right; font-size: 10.5px; }
     .sr-new { font-size: 24px; }
 
-    /* Opening-screen fills exactly one viewport */
+    /* Opening-screen fills exactly one visible viewport (even with Safari URL bar shown) */
     .opening-screen {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      min-height: 100dvh;
+      min-height: 100svh;
     }
     /* Hero gets a bit of top breathing + bottom gap */
     .hero { padding: 28px 0 22px; }
@@ -1148,8 +1146,7 @@
     .review { padding: 4px 0 14px; }
     .opening-screen .scroll-command {
       margin-top: auto;
-      padding-top: 14px;
-      padding-bottom: max(22px, env(safe-area-inset-bottom));
+      padding: 14px 24px max(20px, env(safe-area-inset-bottom));
     }
     .hero h1 {
       font-size: clamp(40px, 11vw, 54px);
@@ -1197,7 +1194,9 @@
 
 <div class="opening-screen">
 <nav>
-  <span class="sire-logo nav-logo" aria-label="Sire"></span>
+  <div class="container">
+    <span class="sire-logo nav-logo" aria-label="Sire"></span>
+  </div>
 </nav>
 
 <section class="hero">
