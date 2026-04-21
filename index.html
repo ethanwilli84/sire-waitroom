@@ -175,6 +175,10 @@
     margin: 0 auto;
     position: relative;
     z-index: 10;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    align-self: stretch;
   }
 
   /* ===== HERO ===== */
@@ -441,20 +445,37 @@
     flex: 1;
     overflow: hidden;
     white-space: nowrap;
-    mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 40px), transparent 100%);
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 80px, #000 calc(100% - 40px), transparent 100%);
+    position: relative;
   }
+
+  /* left/right fade via absolutely-positioned gradient pseudo — keeps GPU compositor happy */
+  .ticker::before,
+  .ticker::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 60px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .ticker::before { left: 0; background: linear-gradient(90deg, #0A0A0A 0%, rgba(10,10,10,0.9) 40%, transparent 100%); }
+  .ticker::after  { right: 0; background: linear-gradient(-90deg, #0A0A0A 0%, rgba(10,10,10,0.9) 40%, transparent 100%); }
 
   .ticker-track {
     display: inline-flex;
     align-items: center;
-    animation: tickerScroll 55s linear infinite;
+    animation: tickerScroll 42s linear infinite;
     white-space: nowrap;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
   @keyframes tickerScroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-33.3333%, 0, 0); }
   }
 
   .ti {
@@ -1114,22 +1135,26 @@
     .sr-save { grid-column: 2; text-align: right; font-size: 10.5px; }
     .sr-new { font-size: 24px; }
 
-    /* Opening-screen fills exactly one viewport: scroll-command pinned to bottom */
+    /* Opening-screen fills exactly one viewport */
     .opening-screen {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       min-height: 100dvh;
     }
+    /* Hero gets a bit of top breathing + bottom gap */
+    .hero { padding: 28px 0 22px; }
+    /* Review sits center-ish; scroll command anchors to bottom but without a huge void */
+    .review { padding: 4px 0 14px; }
     .opening-screen .scroll-command {
       margin-top: auto;
-      padding-bottom: max(28px, env(safe-area-inset-bottom));
+      padding-top: 14px;
+      padding-bottom: max(22px, env(safe-area-inset-bottom));
     }
-    .hero { padding: 12px 0 16px; }
     .hero h1 {
       font-size: clamp(40px, 11vw, 54px);
       line-height: 0.92;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
     .hero-sub {
       font-size: 14.5px;
@@ -1306,7 +1331,7 @@
 
 <section>
   <div class="container">
-    <div class="section-eyebrow">&mdash; The stuff you actually ship</div>
+    <div class="section-eyebrow">&mdash; What you actually ship</div>
     <h2 class="section-title">You save on <em>every label.</em></h2>
 
     <div class="shipment-list">
@@ -1317,7 +1342,7 @@
           <span class="sr-arrow">&rarr;</span>
           <span class="sr-new">$11.95</span>
         </div>
-        <div class="sr-save">&darr; $1.69 saved &middot; 12%</div>
+        <div class="sr-save">&darr; $1.69 saved</div>
       </div>
       <div class="shipment-row">
         <div class="sr-type">Single pair &middot; 2 lb<br>NY &rarr; Miami</div>
@@ -1326,7 +1351,7 @@
           <span class="sr-arrow">&rarr;</span>
           <span class="sr-new">$9.55</span>
         </div>
-        <div class="sr-save">&darr; $1.25 saved &middot; 12%</div>
+        <div class="sr-save">&darr; $1.25 saved</div>
       </div>
       <div class="shipment-row">
         <div class="sr-type">Apparel &middot; 1 lb<br>NY &rarr; Austin</div>
@@ -1335,7 +1360,7 @@
           <span class="sr-arrow">&rarr;</span>
           <span class="sr-new">$8.35</span>
         </div>
-        <div class="sr-save">&darr; $1.10 saved &middot; 12%</div>
+        <div class="sr-save">&darr; $1.10 saved</div>
       </div>
       <div class="shipment-row">
         <div class="sr-type">Multi-item &middot; 8 lb<br>NY &rarr; Seattle</div>
@@ -1344,7 +1369,7 @@
           <span class="sr-arrow">&rarr;</span>
           <span class="sr-new">$16.05</span>
         </div>
-        <div class="sr-save">&darr; $2.15 saved &middot; 12%</div>
+        <div class="sr-save">&darr; $2.15 saved</div>
       </div>
     </div>
   </div>
@@ -1480,7 +1505,7 @@
   }
 
   const track = document.getElementById('tickerTrack');
-  if (track) track.innerHTML = buildTickerSet() + buildTickerSet();
+  if (track) track.innerHTML = buildTickerSet() + buildTickerSet() + buildTickerSet();
 
   const DURATION_SEC = 5 * 60;
   const startedAt = Date.now();
