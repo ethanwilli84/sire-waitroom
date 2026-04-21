@@ -1114,8 +1114,18 @@
     .sr-save { grid-column: 2; text-align: right; font-size: 10.5px; }
     .sr-new { font-size: 24px; }
 
-    /* Opening-screen first-impression: tight layout so scroll command sits in viewport */
-    .hero { padding: 12px 0 20px; }
+    /* Opening-screen fills exactly one viewport: scroll-command pinned to bottom */
+    .opening-screen {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+    .opening-screen .scroll-command {
+      margin-top: auto;
+      padding-bottom: max(28px, env(safe-area-inset-bottom));
+    }
+    .hero { padding: 12px 0 16px; }
     .hero h1 {
       font-size: clamp(40px, 11vw, 54px);
       line-height: 0.92;
@@ -1136,7 +1146,7 @@
     .step-icon svg { width: 8px; height: 8px; }
     .step-time { font-size: 10px; }
 
-    .scroll-command { padding: 20px 16px 8px; }
+    .scroll-command { padding: 16px 16px 8px; }
     .scroll-label { font-size: 10.5px; letter-spacing: 0.18em; margin-bottom: 16px; }
     .scroll-arrow {
       width: clamp(22px, 5.5vw, 28px);
@@ -1160,6 +1170,7 @@
   </div>
 </div>
 
+<div class="opening-screen">
 <nav>
   <span class="sire-logo nav-logo" aria-label="Sire"></span>
 </nav>
@@ -1228,6 +1239,8 @@
     </svg>
   </div>
 </div>
+</div>
+<!-- /.opening-screen -->
 
 <section>
   <div class="container">
