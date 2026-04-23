@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description" content="Sire rate-shops UPS, FedEx, USPS and DHL on every label — automatically. 3,400+ businesses save $6.30 per shipment." />
+  <title>Sire — You're overpaying on every label.</title>
+
+  <meta property="og:title" content="You're overpaying on every label." />
+  <meta property="og:description" content="Sire rate-shops UPS, FedEx, USPS and DHL on every label — automatically." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sireship.com/save" />
+  <meta property="og:image" content="https://sireship.com/assets/images/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Perplexity-aligned palette */
+      --bg: #1a1a1a;
+      --bg-card: #242424;
+      --bg-card-hover: #2a2a2a;
+      --bg-pill: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.12);
+      --fg: #f5f5f0;
+      --fg-dim: #b8b8b2;
+      --fg-muted: #8a8a85;
+      --fg-subtle: #5a5a55;
+      --input-bg: #ffffff;
+      --input-fg: #1a1a1a;
+      --input-placeholder: #8a8a85;
+      --btn-bg: #0a0a0a;
+      --accent-start: #4F46E5;
+      --accent-mid: #7C3AED;
+      --accent-end: #9333EA;
+      --accent-gradient: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #9333EA 100%);
+      --success: #4ade80;
+      --danger: #ef4444;
+
+      --font-display: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-mono: 'Geist Mono', 'SF Mono', Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse 70% 50% at 80% 20%, rgba(124, 58, 237, 0.12), transparent 60%),
+        radial-gradient(ellipse 50% 40% at 10% 70%, rgba(79, 70, 229, 0.08), transparent 60%),
+        var(--bg);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .container-wide {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ——— Header ——— */
+    header {
+      padding: 1.75rem 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      height: 17px;
+      width: auto;
+      opacity: 0.95;
+    }
+
+    .header-proof {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--fg-muted);
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .header-proof::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.6);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+
+    /* ——— Hero (Perplexity-matched) ——— */
+    .hero {
+      padding: 4.5rem 0 3rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2.75rem, 10vw, 4.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      color: var(--fg);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease-out 0.1s forwards;
+    }
+
+    .hero-sub {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 1.0625rem;
+      line-height: 1.5;
+      color: var(--fg-dim);
+      max-width: 480px;
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease-out 0.25s forwards;
+    }
+
+    /* ——— Form ——— */
+    .zip-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 480px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease-out 0.4s forwards;
+    }
+
+    .zip-input-wrap {
+      position: relative;
+      flex: 1;
+    }
+
+    .zip-input {
+      width: 100%;
+      padding: 1.25rem 1.25rem 1.25rem 3rem;
+      background: var(--input-bg);
+      border: none;
+      border-radius: 14px;
+      color: var(--input-fg);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .zip-input::placeholder {
+      color: var(--input-placeholder);
+      letter-spacing: 0.02em;
+      font-family: var(--font-sans);
+    }
+
+    .zip-input:focus {
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.35);
+    }
+
+    .zip-input-wrap::before {
+      content: '';
+      position: absolute;
+      left: 1.1rem; top: 50%;
+      transform: translateY(-50%);
+      width: 18px; height: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235a5a55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      pointer-events: none;
+    }
+
+    .submit-btn {
+      padding: 1.25rem 1.5rem;
+      background: var(--accent-gradient);
+      background-size: 200% 200%;
+      border: none;
+      border-radius: 14px;
+      color: white;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: gradientShift 8s ease infinite;
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+    }
+
+    .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(124, 58, 237, 0.45); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    /* Standalone CTA button (link version, no form wrapper input) */
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 1.25rem 2rem;
+      min-width: 200px;
+      width: auto;
+    }
+
+    .zip-form:has(.cta-link) {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+
+    .final-cta .zip-form:has(.cta-link) {
+      justify-content: center;
+    }
+
+    /* ——— Process card (Perplexity-style single dark card) ——— */
+    .process-section { padding: 1.5rem 0 3rem; }
+
+    .process-card-outer {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 2rem 1.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeUp 0.9s ease-out 0.55s forwards;
+    }
+
+    .process-card-outer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(124, 58, 237, 0.15), transparent 60%);
+      pointer-events: none;
+    }
+
+    .process-header {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .process-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--fg-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.75rem;
+    }
+
+    .process-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.5rem, 4.5vw, 2.25rem);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--fg);
+    }
+
+    .process-title em {
+      font-style: italic;
+      color: var(--fg-dim);
+      font-weight: 500;
+    }
+
+    .process-list {
+      position: relative;
+      padding-left: 0;
+    }
+
+    .process-list::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 22px;
+      bottom: 22px;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .process-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 0.625rem 0;
+      position: relative;
+    }
+
+    .process-icon {
+      width: 38px; height: 38px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: var(--fg);
+      color: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .process-item.active .process-icon {
+      background: var(--accent-gradient);
+      color: white;
+      box-shadow: 0 0 28px rgba(124, 58, 237, 0.6);
+    }
+
+    .process-item.done .process-icon {
+      background: var(--success);
+      color: var(--bg);
+    }
+
+    .process-icon svg { width: 18px; height: 18px; }
+
+    .process-pill {
+      flex: 1;
+      background: var(--bg-pill);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: var(--fg);
+      font-size: 0.9rem;
+      line-height: 1.4;
+      transition: background 0.3s ease;
+    }
+
+    .process-item.active .process-pill { background: rgba(124, 58, 237, 0.14); }
+
+    .process-pill-meta {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--fg-muted);
+      letter-spacing: 0.02em;
+      margin-top: 0.15rem;
+    }
+
+    .process-item.active .process-pill-meta { color: var(--accent-mid); }
+    .process-item.done .process-pill-meta { color: var(--success); }
+
+    /* ——— Receipt section ——— */
+    .receipt-section { padding: 3rem 0 4rem; }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--fg-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 2rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--fg-muted);
+      font-weight: 500;
+    }
+
+    .receipts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .receipt {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .receipt.with-sire {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(147, 51, 234, 0.05));
+      border-color: rgba(124, 58, 237, 0.35);
+    }
+
+    .receipt-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-bottom: 1rem;
+    }
+
+    .receipt.with-sire .receipt-label { color: var(--accent-mid); }
+
+    .receipt-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.5rem 0;
+      font-size: 0.85rem;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .receipt-line:last-of-type { border-bottom: none; }
+    .receipt-line-label { color: var(--fg-muted); }
+    .receipt-line-value { font-family: var(--font-mono); color: var(--fg); }
+
+    .receipt.without .receipt-line-value { color: var(--fg-subtle); text-decoration: line-through; }
+
+    .receipt-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-strong);
+      font-weight: 500;
+    }
+
+    .receipt.without .receipt-total { opacity: 0.5; text-decoration: line-through; }
+    .receipt.with-sire .receipt-total { color: var(--success); }
+
+    .receipt-total-value { font-family: var(--font-mono); font-size: 1.1rem; }
+
+    .savings-callout {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.5rem, 4.5vw, 2rem);
+      letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+
+    .savings-callout .amount {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ——— Founder ——— */
+    .founder {
+      padding: 4rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .founder-quote {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      margin-bottom: 2rem;
+    }
+
+    .founder-quote em {
+      font-style: normal;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    .founder-attribution {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .founder-avatar {
+      width: 2.25rem; height: 2.25rem;
+      border-radius: 50%;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .founder-name { font-size: 0.9rem; font-weight: 500; color: var(--fg); }
+    .founder-role { font-family: var(--font-mono); font-size: 0.7rem; color: var(--fg-muted); letter-spacing: 0.05em; }
+
+    .founder-context {
+      font-size: 0.95rem;
+      color: var(--fg-muted);
+      line-height: 1.55;
+      max-width: 560px;
+    }
+
+    .founder-context strong { color: var(--fg); font-weight: 500; }
+
+    /* ——— Platforms ——— */
+    .platforms {
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .platforms-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--fg-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 1.5rem;
+    }
+
+    .platforms-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 2rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--fg-subtle);
+    }
+
+    .platforms-list span { transition: color 0.3s ease; }
+    .platforms-list span:hover { color: var(--fg); }
+
+    /* ——— FAQ ——— */
+    .faq { padding: 4rem 0 3rem; }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq-item[open] { border-color: var(--border-strong); }
+
+    .faq-item summary {
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      list-style: none;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--fg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: var(--bg-card-hover); }
+
+    .faq-item summary::after {
+      content: '+';
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      color: var(--fg-muted);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+
+    .faq-answer {
+      padding: 0 1.5rem 1.25rem;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--fg-muted);
+    }
+
+    /* ——— Final CTA ——— */
+    .final-cta {
+      padding: 4rem 0 5rem;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2rem, 7vw, 3rem);
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      margin-bottom: 1rem;
+    }
+
+    .final-cta h2 em {
+      font-style: normal;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .final-cta p {
+      color: var(--fg-muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .final-cta .zip-form {
+      margin: 0 auto;
+      opacity: 1;
+      animation: none;
+    }
+
+    /* ——— Footer ——— */
+    footer {
+      padding: 2rem 0 2.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer .logo { height: 14px; }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-links a {
+      color: var(--fg-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover { color: var(--fg); }
+
+    /* ——— Animations ——— */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* ——— Desktop ——— */
+    @media (min-width: 720px) {
+      header { padding: 2rem 0 0; }
+      .logo { height: 19px; }
+      .hero { padding: 6rem 0 4rem; }
+      h1 { font-size: 4.5rem; }
+      .hero-sub { font-size: 1.125rem; margin-bottom: 4rem; }
+      .zip-form { flex-direction: row; max-width: 520px; }
+      .submit-btn { flex-shrink: 0; }
+      .process-section { padding: 2rem 0 4rem; }
+      .process-card-outer { padding: 2.5rem 2.25rem; }
+      .receipt-section { padding: 4rem 0 5rem; }
+      .receipts { gap: 1.5rem; }
+      .receipt { padding: 2rem; }
+    }
+
+    @media (max-width: 400px) {
+      .header-proof { display: none; }
+      .receipts { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ——— Signup view (shown after ZIP submit) ——— */
+    .signup-view { display: none; }
+
+    body.signup-active .hero,
+    body.signup-active .process-section,
+    body.signup-active .receipt-section,
+    body.signup-active .founder,
+    body.signup-active .platforms,
+    body.signup-active .faq,
+    body.signup-active .final-cta,
+    body.signup-active footer {
+      display: none !important;
+    }
+
+    body.signup-active .signup-view {
+      display: block;
+      animation: fadeUp 0.5s ease-out forwards;
+    }
+
+    .signup-section {
+      padding: 2rem 0 4rem;
+      text-align: center;
+    }
+
+    @media (min-width: 720px) {
+      .signup-section { padding: 3rem 0 5rem; }
+    }
+
+    /* CRT monitor illustration */
+    .crt-stage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 2.5rem;
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 1 / 1;
+    }
+
+    .crt-stage::before {
+      content: '';
+      position: absolute;
+      inset: -20%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(147, 197, 253, 0.25), transparent 55%),
+        radial-gradient(circle at 70% 50%, rgba(124, 58, 237, 0.15), transparent 55%),
+        radial-gradient(circle at 50% 80%, rgba(74, 222, 128, 0.12), transparent 60%);
+      filter: blur(40px);
+      z-index: 0;
+      opacity: 0.9;
+    }
+
+    .crt-svg {
+      width: 85%;
+      height: auto;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+    }
+
+    .signup-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin-bottom: 0.75rem;
+    }
+
+    .signup-sub {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--fg-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .signup-input {
+      width: 100%;
+      padding: 1.1rem 1.25rem;
+      background: var(--input-bg);
+      border: none;
+      border-radius: 14px;
+      color: var(--input-fg);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      outline: none;
+      transition: box-shadow 0.2s ease;
+      text-align: left;
+    }
+
+    .signup-input::placeholder {
+      color: var(--input-placeholder);
+    }
+
+    .signup-input:focus {
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.35);
+    }
+
+    .signup-legal {
+      margin: 1.5rem auto 0;
+      font-size: 0.75rem;
+      color: var(--fg-muted);
+      max-width: 360px;
+      line-height: 1.5;
+    }
+
+    .signup-legal a {
+      color: var(--fg-dim);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .signup-legal a:hover { color: var(--fg); }
+
+    .signup-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: transparent;
+      border: none;
+      color: var(--fg-muted);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s ease;
+    }
+
+    .signup-back:hover { color: var(--fg); }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <header>
+    <img class="logo" src="https://sireship.com/assets/images/logo.png" alt="Sire" />
+    <div class="header-proof">3,400+ shipping on Sire</div>
+  </header>
+
+  <!-- ————— HERO ————— -->
+  <section class="hero">
+    <h1>You're overpaying<br/>on every label.</h1>
+    <p class="hero-sub">Sire unlocks wholesale pricing across UPS, FedEx, and USPS. Getting you the lowest rate, every time.</p>
+
+    <form class="zip-form" id="zipForm" novalidate>
+      <a class="submit-btn cta-link" href="https://app.sireapp.io" id="ctaPrimary">Request Access →</a>
+    </form>
+  </section>
+</div>
+
+<!-- ————— PROCESS ————— -->
+<div class="container">
+  <section class="process-section" id="processSection">
+    <div class="process-card-outer">
+      <div class="process-header">
+        <div class="process-label">What happens next</div>
+        <h2 class="process-title">Sire checks every carrier.<br/><em>In seconds.</em></h2>
+      </div>
+
+      <div class="process-list">
+        <div class="process-item" data-step="1">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 17h2a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2h-2V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h2"/>
+              <circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>
+            </svg>
+          </div>
+          <div class="process-pill">
+            Pulling UPS rates
+            <span class="process-pill-meta">Ground · 2nd Day · Next Day Air</span>
+          </div>
+        </div>
+
+        <div class="process-item" data-step="2">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="process-pill">
+            Comparing FedEx
+            <span class="process-pill-meta">Ground · Express · International</span>
+          </div>
+        </div>
+
+        <div class="process-item" data-step="3">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="8" width="18" height="13" rx="2"/>
+              <path d="M3 10l9 6 9-6"/>
+              <path d="M8 3h8v5H8z"/>
+            </svg>
+          </div>
+          <div class="process-pill">
+            Running USPS
+            <span class="process-pill-meta">Priority &amp; Ground Advantage</span>
+          </div>
+        </div>
+
+        <div class="process-item" data-step="4">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div class="process-pill">
+            Checking DHL international
+            <span class="process-pill-meta">220+ countries</span>
+          </div>
+        </div>
+
+        <div class="process-item" data-step="5">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <div class="process-pill">
+            Your cheapest rate — instantly
+            <span class="process-pill-meta">Ready in your account</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ————— RECEIPT ————— -->
+<div class="container">
+  <section class="receipt-section">
+    <div class="section-label">Same box. Same day.</div>
+    <h2 class="section-title"><em>Lower rates.</em></h2>
+
+    <div class="receipts">
+      <div class="receipt without">
+        <div class="receipt-label">Without Sire</div>
+        <div class="receipt-line"><span class="receipt-line-label">UPS Ground</span><span class="receipt-line-value">$14.22</span></div>
+        <div class="receipt-line"><span class="receipt-line-label">Fuel surcharge</span><span class="receipt-line-value">$2.18</span></div>
+        <div class="receipt-line"><span class="receipt-line-label">Residential</span><span class="receipt-line-value">$4.15</span></div>
+        <div class="receipt-total"><span>Total</span><span class="receipt-total-value">$20.55</span></div>
+      </div>
+
+      <div class="receipt with-sire">
+        <div class="receipt-label">With Sire</div>
+        <div class="receipt-line"><span class="receipt-line-label">UPS Ground Saver</span><span class="receipt-line-value">$7.84</span></div>
+        <div class="receipt-line"><span class="receipt-line-label">Fuel</span><span class="receipt-line-value">Included</span></div>
+        <div class="receipt-line"><span class="receipt-line-label">Residential</span><span class="receipt-line-value">Included</span></div>
+        <div class="receipt-total"><span>Total</span><span class="receipt-total-value">$7.84</span></div>
+      </div>
+    </div>
+
+    <div class="savings-callout">You just saved <span class="amount">$12.71</span>.</div>
+  </section>
+</div>
+
+<!-- ————— FOUNDER ————— -->
+<div class="container">
+  <section class="founder">
+    <div class="section-label">Why Sire exists</div>
+    <p class="founder-quote">"I was paying <em>$8,400/mo</em> in shipping. So I built Sire."</p>
+
+    <div class="founder-attribution">
+      <div class="founder-avatar">EW</div>
+      <div>
+        <div class="founder-name">Ethan Williams</div>
+        <div class="founder-role">FOUNDER, SIRE</div>
+      </div>
+    </div>
+
+    <p class="founder-context">
+      Now 3,400+ e-commerce stores use Sire to rate-shop UPS, FedEx, USPS and DHL on every label —
+      saving <strong>$6.30 per shipment, on average.</strong>
+    </p>
+  </section>
+</div>
+
+<!-- ————— PLATFORMS ————— -->
+<div class="container-wide">
+  <section class="platforms">
+    <div class="platforms-label">Built for where you sell</div>
+    <div class="platforms-list">
+      <span>Shopify</span>
+      <span>TikTok Shop</span>
+      <span>eBay</span>
+      <span>Amazon</span>
+      <span>Whatnot</span>
+      <span>Etsy</span>
+      <span>Wholesale</span>
+      <span>D2C</span>
+    </div>
+  </section>
+</div>
+
+<!-- ————— FAQ ————— -->
+<div class="container">
+  <section class="faq">
+    <div class="section-label">Common questions</div>
+    <h2 class="section-title">Anything <em>you're wondering.</em></h2>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How does Sire make money?</summary>
+        <div class="faq-answer">Sire receives commissions from carriers for bringing them new business. You still pay less than carrier retail. No subscription, no minimums, no monthly fee.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do I need to cancel my UPS or FedEx account?</summary>
+        <div class="faq-answer">No. Sire runs on top of UPS, FedEx, USPS and DHL. Keep your existing accounts or use ours — whichever is cheaper wins.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How fast can I ship my first label?</summary>
+        <div class="faq-answer">Under 5 minutes. Sign up, enter the box dimensions, pick the cheapest rate, print. That's the whole flow.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is there a minimum volume?</summary>
+        <div class="faq-answer">No minimum. Some merchants ship 20 a month, some ship 20,000.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What about international shipping?</summary>
+        <div class="faq-answer">Fully supported. UPS, FedEx and DHL international rates are all rate-shopped. 220+ countries.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I integrate with Shopify or my store?</summary>
+        <div class="faq-answer">Yes — Shopify, TikTok Shop, eBay, Amazon, Whatnot, and direct API integration for custom platforms.</div>
+      </details>
+    </div>
+  </section>
+</div>
+
+<!-- ————— FINAL CTA ————— -->
+<div class="container">
+  <section class="final-cta">
+    <h2>Ready to <em>save?</em></h2>
+    <p>Enter your ZIP. We'll show you what you should be paying.</p>
+
+    <form class="zip-form" id="zipForm2" novalidate>
+      <a class="submit-btn cta-link" href="https://app.sireapp.io">Request Access →</a>
+    </form>
+  </section>
+
+  <footer>
+    <img class="logo" src="https://sireship.com/assets/images/logo.png" alt="Sire" />
+    <div class="footer-links">
+      <a href="https://sireship.com">Home</a>
+      <a href="https://sireship.com/privacy">Privacy</a>
+      <a href="https://sireship.com/terms">Terms</a>
+    </div>
+  </footer>
+</div>
+
+<!-- Meta Pixel (Sire) -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '226428990389236');
+  fbq('track', 'PageView');
+  // ViewContent — landing viewed. Builds Meta's "page visitors" retargeting
+  // audience automatically. Fires on every landing load.
+  fbq('track', 'ViewContent', { content_name: 'sire_save_landing' });
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=226428990389236&ev=PageView&noscript=1"/></noscript>
+
+<!-- Page logic -->
+<script>
+  (function() {
+    const APP_URL = 'https://app.sireapp.io';
+
+    // Capture UTMs, click IDs for attribution
+    const params = new URLSearchParams(window.location.search);
+    const captured = {};
+    ['utm_source','utm_medium','utm_campaign','utm_adset','utm_content','utm_term',
+     'campaign_id','adset_id','ad_id','fbclid','wpsrc','wpcid','wpcn'].forEach(k => {
+      const v = params.get(k); if (v) captured[k] = v;
+    });
+
+    if (captured.fbclid) {
+      const fbc = `fb.1.${Date.now()}.${captured.fbclid}`;
+      document.cookie = `_fbc=${fbc}; path=/; max-age=${60*60*24*90}; SameSite=Lax`;
+      captured._fbc = fbc;
+    }
+    const fbpMatch = document.cookie.match(/_fbp=([^;]+)/);
+    if (fbpMatch) captured._fbp = fbpMatch[1];
+
+    // Store full attribution in sessionStorage for app.sireapp.io to read
+    try {
+      sessionStorage.setItem('sire_attribution', JSON.stringify({
+        ...captured,
+        landingUrl: window.location.href,
+        referrer: document.referrer,
+        capturedAt: new Date().toISOString(),
+        screenResolution: `${screen.width}x${screen.height}`,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        language: navigator.language,
+        clientUserAgent: navigator.userAgent,
+      }));
+    } catch(e) {}
+
+    // Append captured params to all Request Access links
+    function buildAppUrl() {
+      const outParams = new URLSearchParams();
+      Object.entries(captured).forEach(([k, v]) => { if (v) outParams.set(k, v); });
+      const qs = outParams.toString();
+      return qs ? `${APP_URL}?${qs}` : APP_URL;
+    }
+
+    document.querySelectorAll('.cta-link').forEach(link => {
+      link.href = buildAppUrl();
+      link.addEventListener('click', () => {
+        // Fire InitiateCheckout on CTA click — signals intent, not conversion.
+        // The actual Lead event fires from sire-stats-syncer AFTER the user
+        // completes signup on app.sireapp.io (deduped via eventID in CAPI).
+        // This event also powers Meta's "InitiateCheckout-but-not-Lead"
+        // retargeting audience automatically.
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'InitiateCheckout', { content_name: 'sire_save_cta_clicked' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
