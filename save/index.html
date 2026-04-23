@@ -213,6 +213,23 @@
     .submit-btn:active { transform: translateY(0); }
     .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
+    /* Microcopy under CTA — sets expectation before click */
+    .cta-microcopy {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--fg-muted);
+      letter-spacing: 0.02em;
+      margin-top: 0.9rem;
+      max-width: 480px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease-out 0.55s forwards;
+    }
+
+    .final-cta .cta-microcopy {
+      text-align: center;
+      margin: 0.9rem auto 0;
+    }
+
     /* Standalone CTA button (link version, no form wrapper input) */
     .cta-link {
       display: inline-flex;
@@ -860,11 +877,40 @@
   <!-- ————— HERO ————— -->
   <section class="hero">
     <h1>You're overpaying<br/>on every label.</h1>
-    <p class="hero-sub">Sire unlocks wholesale pricing across UPS, FedEx, and USPS. Getting you the lowest rate, every time.</p>
+    <p class="hero-sub">Sire unlocks wholesale pricing across UPS, FedEx, and USPS. Saving 3,400+ shippers <strong>$6.30/package</strong> on average.</p>
 
     <form class="zip-form" id="zipForm" novalidate>
       <a class="submit-btn cta-link" href="https://app.sireapp.io" id="ctaPrimary">Request Access →</a>
     </form>
+    <p class="cta-microcopy">Takes 30 seconds. We'll text you your rates.</p>
+  </section>
+</div>
+
+<!-- ————— RECEIPT (moved above process to front-load strongest proof) ————— -->
+<div class="container">
+  <section class="receipt-section">
+    <div class="section-label">Same box. Same day.</div>
+    <h2 class="section-title"><em>Lower rates.</em></h2>
+
+    <div class="receipts">
+      <div class="receipt without">
+        <div class="receipt-label">Without Sire</div>
+        <div class="receipt-line"><span class="receipt-line-label">UPS Ground</span><span class="receipt-line-value">$14.22</span></div>
+        <div class="receipt-line"><span class="receipt-line-label">Fuel surcharge</span><span class="receipt-line-value">$2.18</span></div>
+        <div class="receipt-line"><span class="receipt-line-label">Residential</span><span class="receipt-line-value">$4.15</span></div>
+        <div class="receipt-total"><span>Total</span><span class="receipt-total-value">$20.55</span></div>
+      </div>
+
+      <div class="receipt with-sire">
+        <div class="receipt-label">With Sire</div>
+        <div class="receipt-line"><span class="receipt-line-label">UPS Ground Saver</span><span class="receipt-line-value">$7.84</span></div>
+        <div class="receipt-line"><span class="receipt-line-label">Fuel</span><span class="receipt-line-value">Included</span></div>
+        <div class="receipt-line"><span class="receipt-line-label">Residential</span><span class="receipt-line-value">Included</span></div>
+        <div class="receipt-total"><span>Total</span><span class="receipt-total-value">$7.84</span></div>
+      </div>
+    </div>
+
+    <div class="savings-callout">You just saved <span class="amount">$12.71</span>.</div>
   </section>
 </div>
 
@@ -945,34 +991,6 @@
         </div>
       </div>
     </div>
-  </section>
-</div>
-
-<!-- ————— RECEIPT ————— -->
-<div class="container">
-  <section class="receipt-section">
-    <div class="section-label">Same box. Same day.</div>
-    <h2 class="section-title"><em>Lower rates.</em></h2>
-
-    <div class="receipts">
-      <div class="receipt without">
-        <div class="receipt-label">Without Sire</div>
-        <div class="receipt-line"><span class="receipt-line-label">UPS Ground</span><span class="receipt-line-value">$14.22</span></div>
-        <div class="receipt-line"><span class="receipt-line-label">Fuel surcharge</span><span class="receipt-line-value">$2.18</span></div>
-        <div class="receipt-line"><span class="receipt-line-label">Residential</span><span class="receipt-line-value">$4.15</span></div>
-        <div class="receipt-total"><span>Total</span><span class="receipt-total-value">$20.55</span></div>
-      </div>
-
-      <div class="receipt with-sire">
-        <div class="receipt-label">With Sire</div>
-        <div class="receipt-line"><span class="receipt-line-label">UPS Ground Saver</span><span class="receipt-line-value">$7.84</span></div>
-        <div class="receipt-line"><span class="receipt-line-label">Fuel</span><span class="receipt-line-value">Included</span></div>
-        <div class="receipt-line"><span class="receipt-line-label">Residential</span><span class="receipt-line-value">Included</span></div>
-        <div class="receipt-total"><span>Total</span><span class="receipt-total-value">$7.84</span></div>
-      </div>
-    </div>
-
-    <div class="savings-callout">You just saved <span class="amount">$12.71</span>.</div>
   </section>
 </div>
 
@@ -1058,11 +1076,12 @@
 <div class="container">
   <section class="final-cta">
     <h2>Ready to <em>save?</em></h2>
-    <p>Enter your ZIP. We'll show you what you should be paying.</p>
+    <p>Join 3,400+ shippers saving $6.30 per package, on average.</p>
 
     <form class="zip-form" id="zipForm2" novalidate>
       <a class="submit-btn cta-link" href="https://app.sireapp.io">Request Access →</a>
     </form>
+    <p class="cta-microcopy">Takes 30 seconds. We'll text you your rates.</p>
   </section>
 
   <footer>
