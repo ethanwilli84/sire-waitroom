@@ -882,7 +882,7 @@
     <p class="hero-sub">Sire unlocks wholesale pricing across UPS, FedEx, and USPS. Saving 3,400+ shippers <strong>$6.30/package</strong> on average.</p>
 
     <form class="zip-form" id="zipForm" novalidate>
-      <a class="submit-btn cta-link" href="https://app.sireapp.io" id="ctaPrimary">Request Access →</a>
+      <a class="submit-btn cta-link" href="https://app.sireapp.io/direct-access" id="ctaPrimary">Request Access →</a>
     </form>
     <p class="cta-microcopy">Takes 30 seconds. We'll text you your rates.</p>
   </section>
@@ -1081,7 +1081,7 @@
     <p>Join 3,400+ shippers saving $6.30 per package, on average.</p>
 
     <form class="zip-form" id="zipForm2" novalidate>
-      <a class="submit-btn cta-link" href="https://app.sireapp.io">Request Access →</a>
+      <a class="submit-btn cta-link" href="https://app.sireapp.io/direct-access">Request Access →</a>
     </form>
     <p class="cta-microcopy">Takes 30 seconds. We'll text you your rates.</p>
   </section>
@@ -1114,7 +1114,10 @@
 <!-- Page logic -->
 <script>
   (function() {
-    const APP_URL = 'https://app.sireapp.io';
+    // /direct-access skips the welcome screen and lands the user straight on
+    // phone-input, avoiding a redundant "Request Access" tap. NewSignupPage
+    // handles this route and fires the same funnel pixel events.
+    const APP_URL = 'https://app.sireapp.io/direct-access';
 
     // Capture UTMs, click IDs for attribution
     const params = new URLSearchParams(window.location.search);
