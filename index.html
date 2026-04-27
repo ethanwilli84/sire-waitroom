@@ -281,6 +281,28 @@
 
   .hero-sub-caption svg { width: 12px; height: 12px; }
 
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-left: 0;            /* pill's left border aligned to text column for clean vertical rhythm */
+    margin-top: 20px;          /* sits below the sub headline */
+    padding: 6px 12px 6px 10px;
+    border: 1px solid rgba(120, 200, 140, 0.28);
+    background: rgba(60, 120, 80, 0.06);
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--text-muted);
+    opacity: 0;
+    animation: fadeUp 0.9s ease-out 0.15s forwards;
+  }
+  .hero-pill-mono {
+    font-family: 'Geist Mono', monospace;
+    color: #cfead7;
+    letter-spacing: 0.01em;
+  }
+  .hero-pill-text { color: var(--text-muted); }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -541,6 +563,59 @@
     opacity: 0.5;
     padding: 0 2px;
     font-size: 11px;
+  }
+
+  /* ===== FOUNDER QUOTE ===== */
+  .founder-quote { padding: 32px 0 40px; }
+  .founder-card {
+    background: linear-gradient(180deg, rgba(212,165,116,0.04) 0%, rgba(0,0,0,0) 60%), var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px 36px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .founder-card::after {
+    /* hairline above the attribution */
+    content: '';
+    position: absolute;
+    left: 36px; right: 36px;
+    bottom: 64px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(212,165,116,0.32), rgba(255,255,255,0.04) 70%);
+  }
+  .founder-dash {
+    display: block;
+    color: var(--accent);
+    font-family: 'Geist Mono', monospace;
+    font-size: 18px;
+    line-height: 1;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .founder-card .founder-text {
+    font-family: 'Instrument Serif', serif !important;
+    font-style: normal !important;          /* upright, sturdier than italic */
+    font-weight: 400;
+    font-size: clamp(22px, 3.2vw, 28px);
+    line-height: 1.5;
+    color: #f3ede1;                          /* slightly warm white for legibility */
+    margin: 0 0 30px;
+    letter-spacing: -0.005em;
+    position: relative;
+    z-index: 1;
+  }
+  .founder-card .founder-attribution {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0;
+    padding-top: 18px;
+    position: relative;
+    z-index: 1;
   }
 
   /* ===== SCROLL COMMAND (the screamer) ===== */
@@ -1162,43 +1237,52 @@
     .sr-save { grid-column: 2; text-align: right; font-size: 10.5px; }
     .sr-new { font-size: 24px; }
 
-    /* Opening-screen fills exactly one visible viewport (even with Safari URL bar shown) */
+    /* Opening-screen sized so next section peeks at bottom (no big black void) */
     .opening-screen {
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
-      min-height: 100svh;
+      min-height: auto;
+      padding-bottom: 56px;
     }
-    /* Hero gets a bit of top breathing + bottom gap */
-    .hero { padding: 28px 0 22px; }
-    /* Review sits center-ish; scroll command anchors to bottom but without a huge void */
-    .review { padding: 4px 0 14px; }
-    .opening-screen .scroll-command {
-      margin-top: auto;
-      padding: 14px 24px max(20px, env(safe-area-inset-bottom));
+    /* Hero gets generous breathing room before review block */
+    .hero { padding: 28px 0 36px; }
+    /* Review sits well below hero so the page feels less dense */
+    .review { padding: 0; }
+    .opening-screen .review {
+      margin-top: 0;
+      padding: 0;
     }
     .hero h1 {
       font-size: clamp(40px, 11vw, 54px);
-      line-height: 0.92;
-      margin-bottom: 18px;
+      line-height: 0.95;
+      margin-bottom: 16px;
     }
     .hero-sub {
       font-size: 14.5px;
-      line-height: 1.45;
+      line-height: 1.5;
+      max-width: 340px;
     }
+    .hero-pill { margin-top: 16px; padding: 5px 11px 5px 9px; font-size: 11.5px; }
 
-    .review { padding: 4px 0 8px; }
-    .review-panel { padding: 16px 16px; }
-    .review-header { margin-bottom: 12px; padding-bottom: 10px; }
+    .review { padding: 0; }
+    .review-panel { padding: 18px 18px; }
+
+    .founder-quote { padding: 20px 0 28px; }
+    .founder-card { padding: 22px 22px 16px; border-radius: 14px; }
+    .founder-card::after { left: 22px; right: 22px; bottom: 50px; }
+    .founder-dash { font-size: 16px; margin-bottom: 18px; }
+    .founder-card .founder-text { font-size: 19px !important; line-height: 1.55; margin: 0 0 24px; }
+    .founder-card .founder-attribution { font-size: 10px; letter-spacing: 0.16em; padding-top: 14px; }
+    .review-header { margin-bottom: 14px; padding-bottom: 10px; }
     .review-label { font-size: 9.5px; letter-spacing: 0.12em; }
     .review-id { font-size: 9.5px; }
-    .step { padding: 7px 0; font-size: 11.5px; gap: 12px; }
+    .step { padding: 6px 0; font-size: 11.5px; gap: 12px; }
     .step-icon { width: 16px; height: 16px; }
     .step-icon svg { width: 8px; height: 8px; }
     .step-time { font-size: 10px; }
 
     .scroll-command { padding: 16px 16px 8px; }
-    .scroll-label { font-size: 10.5px; letter-spacing: 0.18em; margin-bottom: 16px; }
+    .scroll-label { font-size: 10.5px; letter-spacing: 0.18em; margin-bottom: 12px; }
     .scroll-arrow {
       width: clamp(22px, 5.5vw, 28px);
       height: clamp(30px, 7vw, 38px);
@@ -1230,11 +1314,15 @@
 
 <section class="hero">
   <div class="container">
-<h1>The lowest rates<br>on the internet.<br><em>Guaranteed.</em></h1>
+<h1>Approval <em>in progress.</em></h1>
     <p class="hero-sub">
-      Your estimated wait time for AI approval is approximately <strong>5 minutes</strong>.
+      Our AI is currently reviewing your application.<br>
+      Final decision will be available in <strong>~5 minutes</strong>.
     </p>
-
+    <div class="hero-pill">
+      <span class="hero-pill-mono">3,400+ stores</span>
+      <span class="hero-pill-text">ship with Sire</span>
+    </div>
   </div>
 </section>
 
@@ -1275,23 +1363,6 @@
   </div>
 </section>
 
-<!-- SCROLL COMMAND (points at the chart below) -->
-<div class="scroll-command">
-  <div class="scroll-label">&rarr;&nbsp;&nbsp;See how much you were overpaying&nbsp;&nbsp;&larr;</div>
-  <div class="scroll-arrow">
-    <svg viewBox="0 0 48 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="arrowGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#F2D7B0"/>
-          <stop offset="55%" stop-color="#D4A574"/>
-          <stop offset="100%" stop-color="#8F6A3E"/>
-        </linearGradient>
-      </defs>
-      <rect x="18" y="0" width="12" height="40" fill="url(#arrowGrad)"/>
-      <path d="M0 36 L24 64 L48 36 Z" fill="url(#arrowGrad)"/>
-    </svg>
-  </div>
-</div>
 </div>
 <!-- /.opening-screen -->
 
@@ -1344,6 +1415,19 @@
   </div>
 </section>
 
+<!-- FOUNDER QUOTE -->
+<section class="founder-quote">
+  <div class="container">
+    <div class="founder-card">
+      <span class="founder-dash">&mdash;</span>
+      <blockquote class="founder-text">
+        I built Sire because I was tired of watching shipping rates destroy my margin. It took me years to negotiate a contract that made sense. Now every entrepreneur on Sire gets those same rates from day one.
+      </blockquote>
+      <div class="founder-attribution">Ethan, Founder</div>
+    </div>
+  </div>
+</section>
+
 <!-- TICKER SECTION (below the chart) -->
 <div class="ticker-section">
   <div class="ticker-wrap" aria-label="Live rate comparison ticker">
@@ -1356,52 +1440,6 @@
     </div>
   </div>
 </div>
-
-<section>
-  <div class="container">
-    <div class="section-eyebrow">&mdash; What you actually ship</div>
-    <h2 class="section-title">You save on <em>every label.</em></h2>
-
-    <div class="shipment-list">
-      <div class="shipment-row">
-        <div class="sr-type">Shoe box &middot; 4 lb<br>NY &rarr; LA</div>
-        <div class="sr-compare">
-          <span class="sr-old">$13.64</span>
-          <span class="sr-arrow">&rarr;</span>
-          <span class="sr-new">$11.95</span>
-        </div>
-        <div class="sr-save">&darr; $1.69 saved</div>
-      </div>
-      <div class="shipment-row">
-        <div class="sr-type">Single pair &middot; 2 lb<br>NY &rarr; Miami</div>
-        <div class="sr-compare">
-          <span class="sr-old">$10.80</span>
-          <span class="sr-arrow">&rarr;</span>
-          <span class="sr-new">$9.55</span>
-        </div>
-        <div class="sr-save">&darr; $1.25 saved</div>
-      </div>
-      <div class="shipment-row">
-        <div class="sr-type">Apparel &middot; 1 lb<br>NY &rarr; Austin</div>
-        <div class="sr-compare">
-          <span class="sr-old">$9.45</span>
-          <span class="sr-arrow">&rarr;</span>
-          <span class="sr-new">$8.35</span>
-        </div>
-        <div class="sr-save">&darr; $1.10 saved</div>
-      </div>
-      <div class="shipment-row">
-        <div class="sr-type">Multi-item &middot; 8 lb<br>NY &rarr; Seattle</div>
-        <div class="sr-compare">
-          <span class="sr-old">$18.20</span>
-          <span class="sr-arrow">&rarr;</span>
-          <span class="sr-new">$16.05</span>
-        </div>
-        <div class="sr-save">&darr; $2.15 saved</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section>
   <div class="container">
